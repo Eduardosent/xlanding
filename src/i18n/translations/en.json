@@ -1,0 +1,14 @@
+{
+  "header": {
+  "home": "Home",
+  "about": "About Us",
+  "services": "Services",
+  "sponsors": "Sponsors",
+  "contact": "Contact"
+  },
+  "hero": { "title": "Welcome to Our Startup" },
+  "about": { "title": "About Us" },
+  "services": { "title": "Our Services" },
+  "sponsors": { "title": "Sponsors" },
+  "footer": { "message": "All rights reserved" }
+}
