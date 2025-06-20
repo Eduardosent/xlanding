@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const images = [
   {
@@ -48,12 +49,15 @@ export default function Carousel() {
           exit="exit"
           transition={{ duration: 0.8 }}
         >
-          <img
+          <Image
             src={images[index].src}
             alt={images[index].alt}
+            fill
             className="object-cover w-full h-full"
+            sizes="(max-width: 768px) 100vw, 800px"
+            priority
           />
-          <div className="absolute bottom-8 left-8 text-white drop-shadow-lg bg-white/10 rounded p-4 max-w-xs">
+          <div className="absolute bottom-8 left-8 text-white drop-shadow-lg bg-white/10 rounded p-4 max-w-xs backdrop-blur-sm">
             <h3 className="text-2xl font-semibold">{images[index].title}</h3>
             <p className="mt-1 text-sm">{images[index].description}</p>
           </div>
@@ -83,7 +87,9 @@ export default function Carousel() {
             key={i}
             aria-label={`Slide ${i + 1}`}
             onClick={() => setIndex([i, i > index ? 1 : -1])}
-            className={`w-3 h-3 rounded-full focus:outline-none ${i === index ? "bg-white" : "bg-white/50"}`}
+            className={`w-3 h-3 rounded-full focus:outline-none ${
+              i === index ? "bg-white" : "bg-white/50"
+            }`}
           />
         ))}
       </div>

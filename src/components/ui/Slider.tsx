@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 
 type SliderProps = {
   images: string[];
@@ -31,20 +32,27 @@ export default function Slider({
         }}
       >
         {[...images, ...images].map((src, i) => (
-          <img
+          <div
             key={i}
-            src={src}
-            alt={`slider-image-${i}`}
-            className="inline-block object-contain block"
             style={{
               height: `${height}px`,
-              width: 'auto',
               minWidth: '80px',
               marginLeft: `${gap / 2}px`,
               marginRight: `${gap / 2}px`,
+              position: 'relative',
             }}
-            loading="lazy"
-          />
+          >
+            <Image
+              src={src}
+              alt={`slider-image-${i}`}
+              fill
+              style={{
+                objectFit: 'contain',
+              }}
+              sizes={`${height}px`}
+              loading="lazy"
+            />
+          </div>
         ))}
       </div>
 

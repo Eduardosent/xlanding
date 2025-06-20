@@ -21,8 +21,7 @@ export default function Footer() {
   return (
     <footer className="relative text-white">
       <FooterBgWaves
-        color="rgba(255, 255, 255, 0.1)"
-        children={
+        color="rgba(255, 255, 255, 0.1)">
           <motion.div
             className="relative z-10 pt-20 pb-16 px-6 sm:px-10 max-w-7xl mx-auto"
             initial="hidden"
@@ -104,8 +103,7 @@ export default function Footer() {
               © 2025 Mi Empresa. Todos los derechos reservados.
             </motion.p>
           </motion.div>
-        }
-      />
+      </FooterBgWaves>
     </footer>
   );
 }

@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function AboutUs() {
@@ -41,13 +42,18 @@ export default function AboutUs() {
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <img
-            src="https://images.openai.com/thumbnails/58769e0ca60a614856c2eb15274ecd97.jpeg"
-            alt="Equipo desarrollando productos digitales"
-            className="rounded-lg w-full h-[360px] object-cover shadow-lg"
-          />
+          <div className="relative w-full h-[360px] rounded-lg overflow-hidden shadow-lg">
+            <Image
+              src="https://images.openai.com/thumbnails/58769e0ca60a614856c2eb15274ecd97.jpeg"
+              alt="Equipo desarrollando productos digitales"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 50vw, 100vw"
+            />
+          </div>
         </motion.div>
       </div>
     </section>
   );
 }
+

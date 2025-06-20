@@ -21,21 +21,20 @@ const languages = [
 export default function Header() {
   const { t, i18n } = useTranslation();
 
-  // Estado para almacenar si ya cargamos el idioma desde localStorage
   const [ready, setReady] = useState(false);
   const [lang, setLang] = useState(i18n.language || "en");
 
-  // Detectar idioma guardado en localStorage (sólo en cliente)
   useEffect(() => {
     const storedLang = localStorage.getItem("lang");
-    if (storedLang && storedLang !== lang) {
-      setLang(storedLang);
+    if (storedLang && storedLang !== i18n.language) {
       i18n.changeLanguage(storedLang);
+      setLang(storedLang);
+    } else {
+      setLang(i18n.language);
     }
-    setReady(true); // ya sincronizado
-  }, []);
+    setReady(true);
+  }, [i18n]);
 
-  // Cambiar idioma cuando cambie lang
   useEffect(() => {
     if (ready) {
       i18n.changeLanguage(lang);
@@ -43,7 +42,6 @@ export default function Header() {
     }
   }, [lang, i18n, ready]);
 
-  // Mostrar header al hacer scroll
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -65,7 +63,6 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  // NO RENDERIZAR NADA HASTA QUE READY SEA TRUE para evitar mismatch
   if (!ready) return null;
 
   return (
